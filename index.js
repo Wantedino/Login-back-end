@@ -1,9 +1,11 @@
 const express = require("express")
 const uuid = require('uuid')
+const cors = require('cors')
 
-const port = 3000
+const port = 3002
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 
 const users = []
@@ -36,6 +38,7 @@ app.post('/users', (request, response) =>{
     users.push(user)
 
     return response.status(201).json(user)
+
 })
 
 app.put('/users/:id',checkUserId, (request, response) =>{
